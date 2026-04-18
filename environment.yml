@@ -1,0 +1,15 @@
+name: adeptgo
+channels:
+  - pytorch
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - numpy
+  - networkx
+  - scikit-learn
+  - pyyaml
+  - pip:
+      - torch
+      - torch-geometric
+      - obonet

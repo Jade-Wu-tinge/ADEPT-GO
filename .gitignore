@@ -1,0 +1,5 @@
+model/best_model_*.pt
+__pycache__/
+*.pyc
+data/nrSwiss-Model-GO_sequences.fasta
+data/nrSwiss-Model-GO_annot.tsv

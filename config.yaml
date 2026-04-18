@@ -1,0 +1,42 @@
+run:
+  seed: 0
+  device: auto
+  ont: mf
+  go_graph_path: /root/autodl-tmp/code/DO_preprocess/双图/noclosure/mf_dual_bidirectional_graph.pt
+  tag: ""
+  ckpt_dir: .
+
+paths:
+  processed_dir: /root/autodl-tmp/datasets/processed
+  annot_path: /root/autodl-tmp/datasets/labels/nrPDB-GO_2019.06.18_annot.tsv
+  annot_path_af2: /root/autodl-tmp/datasets/labels/nrSwiss-Model-GO_annot.tsv
+  go_obo_path: /root/autodl-tmp/datasets/labels/go-basic.obo
+
+training:
+  batch_size: 16
+  lr: 3.0e-5
+  epochs: 100
+  early_stop_patience: 5
+  num_workers: 0
+  keep_fp16: false
+  use_af2: true
+
+model:
+  seq_dim: 1280
+  gcn_hidden: 256
+  token_level_go_q: true
+  go_attn_heads: 8
+  use_freq_bucket_heads: true
+
+bucket:
+  q_low: 0.6
+  q_high: 0.9
+
+loss:
+  use_focal_loss: true
+  focal_gamma: 2.0
+  use_bucketed_loss: true
+  bucket_loss_weights:
+    high: 1.0
+    mid: 1.2
+    low: 1.6
